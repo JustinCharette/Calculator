@@ -1,0 +1,7 @@
+{
+    "java.help.shareDiagnostics": true,
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "JTattoo-1.6.13.jar"
+    ]
+}
