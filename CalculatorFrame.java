@@ -27,7 +27,7 @@ JButton exponentXButton; JButton openBrackButton; JButton closeBrackButton; JBut
 JButton eraseButton; JButton dotButton; JButton sinButton;JButton cosButton; JButton tanButton; JButton deleteButton;
 JButton percentageButton; JButton absoluteButton;
 
-
+JTextField textField;
 
 
 
@@ -108,7 +108,7 @@ JButton percentageButton; JButton absoluteButton;
      button8.addActionListener(this); 
 	 button8.setText("8"); 
      button8.setFocusable(false);
-    button8.setBackground(new Color(192,192,192));
+     button8.setBackground(new Color(192,192,192));
 
      button9.addActionListener(this); 
 	 button9.setText("9"); 
@@ -188,9 +188,9 @@ JButton percentageButton; JButton absoluteButton;
 
     JPanel displayArea = new JPanel();      // this panel will be used to hold the diplay area for the calculator 
     //displayArea.setBackground(Color.green);
-    displayArea.setBounds(50,25,400,50);
-   JTextField textField = new JTextField();
-    textField.setPreferredSize(new Dimension(450,50));
+    displayArea.setBounds(0,25,500,50);
+    textField = new JTextField();
+    textField.setPreferredSize(new Dimension(500,50));
     displayArea.add(textField);
 
 
@@ -295,7 +295,96 @@ JButton percentageButton; JButton absoluteButton;
 
 
 
-    public void actionPerformed(ActionEvent e) { }
+    public void actionPerformed(ActionEvent e) {
+
+        //number panel
+        if(e.getSource()== dotButton){
+            textField.setText(textField.getText().concat("."));
+        }
+        if(e.getSource()== button0){
+            textField.setText(textField.getText().concat("0"));
+        }
+        if(e.getSource()== button1){
+            textField.setText(textField.getText().concat("1"));
+        }
+        if(e.getSource()== button2){
+            textField.setText(textField.getText().concat("2"));
+        }
+        if(e.getSource()== button3){
+            textField.setText(textField.getText().concat("3"));
+        }
+        if(e.getSource()== button4){
+            textField.setText(textField.getText().concat("4"));
+        }
+        if(e.getSource()== button5){
+            textField.setText(textField.getText().concat("5"));
+        }
+        if(e.getSource()== button6){
+            textField.setText(textField.getText().concat("6"));
+        }
+        if(e.getSource()== button7){
+            textField.setText(textField.getText().concat("7"));
+        }
+        if(e.getSource()== button8){
+            textField.setText(textField.getText().concat("8"));
+        }
+        if(e.getSource()== button9){
+            textField.setText(textField.getText().concat("9"));
+        }
+        if(e.getSource()== posToNegButton){
+            textField.setText(textField.getText().concat("-"));
+        }
+          //operation panel
+        if(e.getSource()== plusButton){
+            textField.setText(textField.getText().concat("+"));
+        }
+        if(e.getSource()== minusButton){
+            textField.setText(textField.getText().concat("-"));
+        }
+        if(e.getSource()== multiplyButton){
+            textField.setText(textField.getText().concat("*"));
+        }
+        if(e.getSource()== devideButton){
+            textField.setText(textField.getText().concat("/"));
+        }
+        if(e.getSource()==  equalsButton){
+            textField.setText(textField.getText().concat("="));
+        }
+        //buttons panel
+        if(e.getSource()==  absoluteButton){
+            textField.setText(textField.getText().concat("| |"));
+        }
+        if(e.getSource()==  percentageButton){
+            textField.setText(textField.getText().concat("%"));
+        }
+        if(e.getSource()==  tanButton){
+            textField.setText(textField.getText().concat("tan()"));
+        }
+        if(e.getSource()==  cosButton){
+            textField.setText(textField.getText().concat("cos()"));
+        }
+        if(e.getSource()==  sinButton){
+            textField.setText(textField.getText().concat("sin()"));
+        }
+        if(e.getSource()==  piButton){
+            textField.setText(textField.getText().concat("π"));
+        }
+        if(e.getSource()==  openBrackButton){
+            textField.setText(textField.getText().concat("("));
+        }
+        if(e.getSource()==  closeBrackButton){
+            textField.setText(textField.getText().concat(")"));
+        }
+        if(e.getSource()==  squareButton){
+            textField.setText(textField.getText().concat("²"));
+        }
+        if(e.getSource()==  squareRootButton){
+            textField.setText(textField.getText().concat("√"));
+        }
+        if(e.getSource()==  exponentXButton){
+            textField.setText(textField.getText().concat("")); 
+        }
+     }
         
            
           
