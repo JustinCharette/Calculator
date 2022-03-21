@@ -52,8 +52,10 @@ JButton deleteButton;
 JButton percentageButton; 
 JButton absoluteButton;
 JTextField textField;
-
-
+double number1=0;
+double number2=0;
+double result=0;
+char operator;
 
 
 
@@ -159,7 +161,7 @@ JTextField textField;
     buttons.add(closeBrackButton);
     buttons.add(absoluteButton);
     
-    for(int i =0; i<buttons.size()-1;i++) {
+    for(int i =0; i<buttons.size();i++) {
         buttons.get(i).addActionListener(this);
         buttons.get(i).setFocusable(false);
     }
@@ -194,8 +196,8 @@ JTextField textField;
      numberPanel.add(button4);
      numberPanel.add(button5);
      numberPanel.add(button6);
-     numberPanel.add(button7)
-     ;numberPanel.add(button8);
+     numberPanel.add(button7);
+     numberPanel.add(button8);
      numberPanel.add(button9);
      numberPanel.add(button0);
      numberPanel.add(dotButton); 
@@ -316,42 +318,103 @@ JTextField textField;
             textField.setText(textField.getText().concat("9"));
         }
         if(e.getSource()== posToNegButton){
-            textField.setText(textField.getText().concat("-"));
+            number1 = Double.parseDouble(textField.getText());
+            number1 = number1 * -1;
+            textField.setText(String.valueOf(number1));
         }
           //operation panel
         if(e.getSource()== plusButton){
-            textField.setText(textField.getText().concat("+"));
+            operator = '+';
+            number1 = Double.parseDouble(textField.getText());
+            textField.setText("");
         }
         if(e.getSource()== minusButton){
-            textField.setText(textField.getText().concat("-"));
+            operator = '-';
+            number1 = Double.parseDouble(textField.getText());
+            textField.setText("");
         }
         if(e.getSource()== multiplyButton){
-            textField.setText(textField.getText().concat("*"));
+            operator = '*';
+            number1 = Double.parseDouble(textField.getText());
+            textField.setText("");
         }
         if(e.getSource()== devideButton){
-            textField.setText(textField.getText().concat("/"));
+            operator = '/';
+            number1 = Double.parseDouble(textField.getText());
+            textField.setText("");
         }
         if(e.getSource()==  equalsButton){
-            textField.setText(textField.getText().concat("="));
-        }
+            number2=Double.parseDouble(textField.getText());
+			
+			switch(operator) {
+			case'+':
+				result=number1+number2;
+				break;
+			case'-':
+				result=number1-number2;
+				break;
+			case'*':
+				result=number1*number2;
+				break;
+			case'/':
+				result=number1/number2;
+				break;
+			}
+			textField.setText(String.valueOf(result));
+			number1=result;
+		}
+        
         //buttons panel
         if(e.getSource()==  absoluteButton){
-            textField.setText(textField.getText().concat("| |"));
+            String a = "Absolute ( " +textField.getText()+ " )";
+            textField.setText(a);
+           
+        }
+
+        if(e.getSource()==  eraseButton){
+            textField.setText("");
+           
+
+        }
+        if(e.getSource()== deleteButton) {
+            textField.setText(""+textField.getText().substring(0, textField.getText ().length() - 1));
         }
         if(e.getSource()==  percentageButton){
-            textField.setText(textField.getText().concat("%"));
+            number2 = Double.parseDouble(textField.getText());
+            number2 = number2 /100;
+            number2 = number2*number1;
+            textField.setText(String.valueOf(number2));
         }
+         
+        if(e.getSource()==  exponentXButton){
+           double num = Double.parseDouble(textField.getText());
+           textField.setText("");
+           double num2 = Double.parseDouble(textField.getText());
+           num = Math.pow(num, num2);
+           textField.setText(String.valueOf(num));
+
+
+        }
+
+
         if(e.getSource()==  tanButton){
-            textField.setText(textField.getText().concat("tan()"));
+            double num = Double.parseDouble(textField.getText());
+            num = Math.tan(num);
+            textField.setText(String.valueOf(num));
+
         }
         if(e.getSource()==  cosButton){
-            textField.setText(textField.getText().concat("cos()"));
+            double num = Double.parseDouble(textField.getText());
+            num = Math.cos(num);
+            textField.setText(String.valueOf(num));
         }
         if(e.getSource()==  sinButton){
-            textField.setText(textField.getText().concat("sin()"));
+            double num = Double.parseDouble(textField.getText());
+            num = Math.sin(num);
+            textField.setText(String.valueOf(num));
         }
         if(e.getSource()==  piButton){
-            textField.setText(textField.getText().concat("π"));
+            textField.setText(String.valueOf(Math.PI));
         }
         if(e.getSource()==  openBrackButton){
             textField.setText(textField.getText().concat("("));
@@ -360,17 +423,23 @@ JTextField textField;
             textField.setText(textField.getText().concat(")"));
         }
         if(e.getSource()==  squareButton){
-            textField.setText(textField.getText().concat("²"));
+            
+            double num = Double.parseDouble(textField.getText());
+            num = num * num;
+            textField.setText(String.valueOf(num));
         }
         if(e.getSource()==  squareRootButton){
-            textField.setText(textField.getText().concat("√"));
+            double num = Double.parseDouble(textField.getText());
+            num = Math.sqrt(num);
+            textField.setText(String.valueOf(num));
         }
-        if(e.getSource()==  exponentXButton){
-            textField.setText(textField.getText().concat("")); 
-        }
+        
      }
         
            
           
         
 }// end of class 
+
+
+// exponant x button , removing the .o when it is eaven example : 12 / 4 = 3.0 should be 3  , brackets , absolute value , changing the size / font of the text field ,  logo? read me (together)
