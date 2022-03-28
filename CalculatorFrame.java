@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.Dimension;
+import java.awt.Font;
+
 import javax.swing.border.Border;
 import javax.swing.JButton; 
 import javax.swing.JFrame; 
@@ -231,6 +233,7 @@ char operator;
     displayArea.setBounds(0,25,500,50);
     textField = new JTextField();
     textField.setPreferredSize(new Dimension(500,50));
+    textField.setFont(new Font("Varela Round",Font.BOLD, 35));
     displayArea.add(textField);
 
     JPanel buttonsPannel = new JPanel(); // this pannel will be used to house the rest of the buttons on the calculator 
@@ -359,21 +362,36 @@ char operator;
 			case'/':
 				result=number1/number2;
 				break;
+            case '^':
+                result = Math.pow(number1, number2);
 			}
-			textField.setText(String.valueOf(result));
-			number1=result;
+            if(Math.ceil(result)/Math.floor(result)==1){
+                int intResult= (int) result;
+                textField.setText(String.valueOf(intResult));
+			    number1=intResult;
+            }
+            else{
+                textField.setText(String.valueOf(result));
+                number1=result;}
+			
 		}
         
         //buttons panel
         if(e.getSource()==  absoluteButton){
-            String a = "Absolute ( " +textField.getText()+ " )";
+            number2 = Double.parseDouble(textField.getText());
+            String a = "Absolute ( " +number2+ " )";
             textField.setText(a);
-           
+            number2= Math.abs(number2);
+            if(Math.ceil(number2)/Math.floor(number2)==1){
+            textField.setText(String.valueOf((int) number2));
+            }
+            else{
+            textField.setText(String.valueOf(number2));
+            }
         }
 
         if(e.getSource()==  eraseButton){
             textField.setText("");
-           
 
         }
         if(e.getSource()== deleteButton) {
@@ -383,35 +401,51 @@ char operator;
             number2 = Double.parseDouble(textField.getText());
             number2 = number2 /100;
             number2 = number2*number1;
-            textField.setText(String.valueOf(number2));
+            if(Math.ceil(number2)/Math.floor(number2)==1){
+                textField.setText(String.valueOf((int) number2));
+                }
+                else{
+                textField.setText(String.valueOf(number2));
+                }
         }
-         
+
         if(e.getSource()==  exponentXButton){
-           double num = Double.parseDouble(textField.getText());
-           textField.setText("");
-           double num2 = Double.parseDouble(textField.getText());
-           num = Math.pow(num, num2);
-           textField.setText(String.valueOf(num));
-
-
+            operator = '^';
+            number1 = Double.parseDouble(textField.getText());
+            textField.setText("");
         }
 
 
         if(e.getSource()==  tanButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.tan(num);
-            textField.setText(String.valueOf(num));
+            if(Math.ceil(num)/Math.floor(num)==1){
+                textField.setText(String.valueOf((int) num));
+                }
+                else{
+                textField.setText(String.valueOf(num));
+                }
 
         }
         if(e.getSource()==  cosButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.cos(num);
-            textField.setText(String.valueOf(num));
+            if(Math.ceil(num)/Math.floor(num)==1){
+                textField.setText(String.valueOf((int) num));
+                }
+                else{
+                textField.setText(String.valueOf(num));
+                }
         }
         if(e.getSource()==  sinButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.sin(num);
-            textField.setText(String.valueOf(num));
+            if(Math.ceil(num)/Math.floor(num)==1){
+                textField.setText(String.valueOf((int) num));
+                }
+                else{
+                textField.setText(String.valueOf(num));
+                }
         }
         if(e.getSource()==  piButton){
             textField.setText(String.valueOf(Math.PI));
@@ -426,12 +460,22 @@ char operator;
             
             double num = Double.parseDouble(textField.getText());
             num = num * num;
-            textField.setText(String.valueOf(num));
+            if(Math.ceil(num)/Math.floor(num)==1){
+                textField.setText(String.valueOf((int) num));
+                }
+                else{
+                textField.setText(String.valueOf(num));
+                }
         }
         if(e.getSource()==  squareRootButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.sqrt(num);
-            textField.setText(String.valueOf(num));
+            if(Math.ceil(num)/Math.floor(num)==1){
+                textField.setText(String.valueOf((int) num));
+                }
+                else{
+                textField.setText(String.valueOf(num));
+                }
         }
         
      }
