@@ -18,7 +18,7 @@ buidling the Jframe , color palettes, where the buttons are located, code refact
 Vivian:
 getting the buttons to display when pressed, half of the functions buttons, font and size of text
 
-Justin
+Justin :
 operator math, half of the functions buttons
 
 sources:
