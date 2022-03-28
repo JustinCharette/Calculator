@@ -113,8 +113,6 @@ char operator;
     squareButton = new JButton(); 
     squareRootButton = new JButton(); 
     exponentXButton = new JButton(); 
-    openBrackButton = new JButton(); 
-    closeBrackButton = new JButton(); 
     piButton = new JButton();
     eraseButton = new JButton(); 
     sinButton = new JButton(); 
@@ -159,8 +157,6 @@ char operator;
     buttons.add(tanButton);
     buttons.add(deleteButton);
     buttons.add(eraseButton);
-    buttons.add(openBrackButton);
-    buttons.add(closeBrackButton);
     buttons.add(absoluteButton);
     
     for(int i =0; i<buttons.size();i++) {
@@ -175,7 +171,7 @@ char operator;
        buttons.get(i).setBackground(new Color(249,131,14));
     }
     
-    for(int i =17; i <= 29;i++) {
+    for(int i =17; i <= 27;i++) {
         buttons.get(i).setBackground(new Color(104,152,183));
     }
 
@@ -244,9 +240,7 @@ char operator;
     
     squareButton.setText("X²"); 
     squareRootButton.setText("√"); 
-    exponentXButton.setText("N^X");  
-    openBrackButton.setText("("); 
-    closeBrackButton.setText(")"); 
+    exponentXButton.setText("N^X");   
     piButton.setText("π");  
     eraseButton.setText("AC"); 
     sinButton .setText("Sin"); 
@@ -267,8 +261,6 @@ char operator;
     buttonsPannel.add(tanButton);
     buttonsPannel.add(deleteButton);
     buttonsPannel.add(eraseButton);
-    buttonsPannel.add(openBrackButton);
-    buttonsPannel.add(closeBrackButton); 
     buttonsPannel.add(absoluteButton);
 
     calculatorFrame.add(numberPanel);
@@ -290,63 +282,63 @@ char operator;
         if(e.getSource()== dotButton){
             textField.setText(textField.getText().concat("."));
         }
-        if(e.getSource()== button0){
+        else if(e.getSource()== button0){
             textField.setText(textField.getText().concat("0"));
         }
-        if(e.getSource()== button1){
+        else if(e.getSource()== button1){
             textField.setText(textField.getText().concat("1"));
         }
-        if(e.getSource()== button2){
+        else if(e.getSource()== button2){
             textField.setText(textField.getText().concat("2"));
         }
-        if(e.getSource()== button3){
+        else if(e.getSource()== button3){
             textField.setText(textField.getText().concat("3"));
         }
-        if(e.getSource()== button4){
+        else if(e.getSource()== button4){
             textField.setText(textField.getText().concat("4"));
         }
-        if(e.getSource()== button5){
+        else if(e.getSource()== button5){
             textField.setText(textField.getText().concat("5"));
         }
-        if(e.getSource()== button6){
+        else if(e.getSource()== button6){
             textField.setText(textField.getText().concat("6"));
         }
-        if(e.getSource()== button7){
+        else if(e.getSource()== button7){
             textField.setText(textField.getText().concat("7"));
         }
-        if(e.getSource()== button8){
+        else if(e.getSource()== button8){
             textField.setText(textField.getText().concat("8"));
         }
-        if(e.getSource()== button9){
+        else if(e.getSource()== button9){
             textField.setText(textField.getText().concat("9"));
         }
-        if(e.getSource()== posToNegButton){
+        else if(e.getSource()== posToNegButton){
             number1 = Double.parseDouble(textField.getText());
             number1 = number1 * -1;
             textField.setText(String.valueOf(number1));
         }
           //operation panel
-        if(e.getSource()== plusButton){
+        else if(e.getSource()== plusButton){
             operator = '+';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
         }
-        if(e.getSource()== minusButton){
+        else if(e.getSource()== minusButton){
             operator = '-';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
         }
-        if(e.getSource()== multiplyButton){
+        else if(e.getSource()== multiplyButton){
             operator = '*';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
         }
-        if(e.getSource()== devideButton){
+        else if(e.getSource()== devideButton){
             operator = '/';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
         }
-        if(e.getSource()==  equalsButton){
+        else if(e.getSource()==  equalsButton){
             number2=Double.parseDouble(textField.getText());
 			
 			switch(operator) {
@@ -365,7 +357,7 @@ char operator;
             case '^':
                 result = Math.pow(number1, number2);
 			}
-            if(Math.ceil(result)/Math.floor(result)==1){
+             if(Math.ceil(result)/Math.floor(result)==1){
                 int intResult= (int) result;
                 textField.setText(String.valueOf(intResult));
 			    number1=intResult;
@@ -377,7 +369,7 @@ char operator;
 		}
         
         //buttons panel
-        if(e.getSource()==  absoluteButton){
+        else if(e.getSource()==  absoluteButton){
             number2 = Double.parseDouble(textField.getText());
             String a = "Absolute ( " +number2+ " )";
             textField.setText(a);
@@ -390,14 +382,18 @@ char operator;
             }
         }
 
-        if(e.getSource()==  eraseButton){
+        else if(e.getSource()==  eraseButton){
             textField.setText("");
+            number1=0;
+            number2=0;
+        
 
         }
-        if(e.getSource()== deleteButton) {
+        else if(e.getSource()== deleteButton) {
             textField.setText(""+textField.getText().substring(0, textField.getText ().length() - 1));
+            
         }
-        if(e.getSource()==  percentageButton){
+        else if(e.getSource()==  percentageButton){
             number2 = Double.parseDouble(textField.getText());
             number2 = number2 /100;
             number2 = number2*number1;
@@ -409,14 +405,14 @@ char operator;
                 }
         }
 
-        if(e.getSource()==  exponentXButton){
+        else if(e.getSource()==  exponentXButton){
             operator = '^';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
         }
 
 
-        if(e.getSource()==  tanButton){
+        else if(e.getSource()==  tanButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.tan(num);
             if(Math.ceil(num)/Math.floor(num)==1){
@@ -427,7 +423,7 @@ char operator;
                 }
 
         }
-        if(e.getSource()==  cosButton){
+        else if(e.getSource()==  cosButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.cos(num);
             if(Math.ceil(num)/Math.floor(num)==1){
@@ -437,7 +433,7 @@ char operator;
                 textField.setText(String.valueOf(num));
                 }
         }
-        if(e.getSource()==  sinButton){
+        else if(e.getSource()==  sinButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.sin(num);
             if(Math.ceil(num)/Math.floor(num)==1){
@@ -447,16 +443,11 @@ char operator;
                 textField.setText(String.valueOf(num));
                 }
         }
-        if(e.getSource()==  piButton){
+        else if(e.getSource()==  piButton){
             textField.setText(String.valueOf(Math.PI));
         }
-        if(e.getSource()==  openBrackButton){
-            textField.setText(textField.getText().concat("("));
-        }
-        if(e.getSource()==  closeBrackButton){
-            textField.setText(textField.getText().concat(")"));
-        }
-        if(e.getSource()==  squareButton){
+        
+        else if(e.getSource()==  squareButton){
             
             double num = Double.parseDouble(textField.getText());
             num = num * num;
@@ -467,7 +458,7 @@ char operator;
                 textField.setText(String.valueOf(num));
                 }
         }
-        if(e.getSource()==  squareRootButton){
+        else if(e.getSource()==  squareRootButton){
             double num = Double.parseDouble(textField.getText());
             num = Math.sqrt(num);
             if(Math.ceil(num)/Math.floor(num)==1){
@@ -486,4 +477,3 @@ char operator;
 }// end of class 
 
 
-// exponant x button , removing the .o when it is eaven example : 12 / 4 = 3.0 should be 3  , brackets , absolute value , changing the size / font of the text field ,  logo? read me (together)
