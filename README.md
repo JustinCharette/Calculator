@@ -16,10 +16,10 @@ together:
 buidling the Jframe , color palettes, where the buttons are located, code refactoring
 
 Vivian:
-getting the buttons to display when pressed, half of the funstions buttons, font and size of text
+getting the buttons to display when pressed, half of the functions buttons, font and size of text
 
 Justin
-operator math, half of the functtions buttons
+operator math, half of the functions buttons
 
 sources:
 github tutorial : https://www.youtube.com/watch?v=RGOj5yH7evk&t=2686s&ab_channel=freeCodeCamp.org
