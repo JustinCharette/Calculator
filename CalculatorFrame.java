@@ -22,7 +22,8 @@ public class CalculatorFrame extends JFrame implements ActionListener{
    
 
 // buttons as instance variables as they will be needed in the action event listner method outside the constructor
-
+int equalscounter =0; 
+int operationsCounter =0;
 JButton button1;
 JButton button2; 
 JButton button3; 
@@ -277,7 +278,7 @@ char operator;
 
 
     public void actionPerformed(ActionEvent e) {
-
+       
         //number panel
         if(e.getSource()== dotButton){
             textField.setText(textField.getText().concat("."));
@@ -319,28 +320,90 @@ char operator;
         }
           //operation panel
         else if(e.getSource()== plusButton){
+            equalscounter --;
+            operationsCounter++;
+           
+            if (operationsCounter ==2) {
+             operator = '+';
+             number2=Double.parseDouble(textField.getText());
+             number1 = number1 + number2;
+            textField.setText("");
+            
+            }
+           
+            else {
             operator = '+';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
+            
+            }
+            operationsCounter = 1;
         }
         else if(e.getSource()== minusButton){
+            operationsCounter++;
+            equalscounter--;
+            if (operationsCounter ==2) {
+                operator = '-';
+                number2=Double.parseDouble(textField.getText());
+                number1 = number1 - number2;
+               textField.setText("");
+               
+               }
+               else {
             operator = '-';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
+           
+               }
+               operationsCounter = 1;
         }
         else if(e.getSource()== multiplyButton){
+            equalscounter --;
+            operationsCounter++;
+            if (operationsCounter ==2) {
+                operator = '*';
+                number2=Double.parseDouble(textField.getText());
+                number1 = number1 * number2;
+               textField.setText("");
+               
+               }
+               else {
             operator = '*';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
+               }
+               operationsCounter = 1;
         }
         else if(e.getSource()== devideButton){
+            equalscounter --;
+            operationsCounter++;
+            if (operationsCounter ==2) {
+                operator = '/';
+                number2=Double.parseDouble(textField.getText());
+                number1 = number1 / number2;
+               textField.setText("");
+               
+               }
+               else {
             operator = '/';
             number1 = Double.parseDouble(textField.getText());
             textField.setText("");
+               }
+               operationsCounter = 1;
         }
         else if(e.getSource()==  equalsButton){
-            number2=Double.parseDouble(textField.getText());
-			
+            equalscounter ++;  
+            operationsCounter = 0; 
+               if (equalscounter ==2 ) {
+                   number2 = number2;
+                   
+               }
+              
+               else  {
+                number2=Double.parseDouble(textField.getText());
+               }
+               equalscounter = 1;
+        
 			switch(operator) {
 			case'+':
 				result=number1+number2;
